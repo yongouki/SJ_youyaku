@@ -21,11 +21,17 @@
     </style>
 </head>
 <body>
-    <h1>Character Counter and Content Fetcher</h1>
+    <h1>Character Counter TEST</h1>
     <textarea id="textbox" oninput="updateCharacterCountAndContent()"></textarea>
     <p>Character Count: <span id="charCount">0</span></p>
     <div id="content"></div>
+    
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw&text=text" class="twitter-share-button" data-show-count="false">
+        Tweet
+    </a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"> </script>
 
+    
     <script>
         function updateCharacterCountAndContent() {
             var text = document.getElementById('textbox').value;
