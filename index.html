@@ -3,28 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Counter</title>
+    <title>Character Counter and Twitter Share</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #textbox {
+            width: 100%;
+            height: 100px;
+        }
+        #tweetButton {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Character Counter</h1>
-    <form action="/submit" method="POST">
-        <textarea id="textbox" name="textbox" rows="10" cols="30" oninput="countCharacters()"></textarea>
-        <p>Character Count: <span id="charCount">0</span></p>
-        <button type="submit">Submit</button>
-    </form>
-    <br>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
-        Tweet
-    </a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"> 
-    </script>
+    <h1>Character Counter and Twitter Share</h1>
+    <textarea id="textbox" oninput="updateCharacterCount()"></textarea>
+    <p>Character Count: <span id="charCount">0</span></p>
+    <a id="twitter-share-button" href="#" target="_blank">Tweet</a>
+    <p id="responseMessage"></p>
 
-    
     <script>
-        function countCharacters() {
+        function updateCharacterCount() {
             var text = document.getElementById('textbox').value;
             var count = text.length;
             document.getElementById('charCount').innerText = count;
+
+            // Twitterシェアボタンのhrefを更新
+            var twitterShareButton = document.getElementById('twitter-share-button');
+            var tweetContent = text + ' (Character Count: ' + count + ')';
+            var twitterShareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetContent);
+            twitterShareButton.setAttribute('href', twitterShareUrl);
         }
     </script>
 </body>
