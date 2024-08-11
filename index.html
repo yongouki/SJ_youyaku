@@ -31,9 +31,12 @@
             var count = text.length;
             document.getElementById('charCount').innerText = count;
 
+            // 現在のページのURLを取得
+            var currentUrl = window.location.href;
+            
             // Twitterシェアボタンのhrefを更新
             var twitterShareButton = document.getElementById('twitter-share-button');
-            var tweetContent = text + ' (' + count + ')';
+            var tweetContent = text + ' (Character Count: ' + count + ') ' + currentUrl;
             var twitterShareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetContent);
             twitterShareButton.setAttribute('href', twitterShareUrl);
         }
