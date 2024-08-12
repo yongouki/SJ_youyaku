@@ -15,6 +15,12 @@
         }
         #tweetButton {
             margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #1da1f2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
         #alertMessage {
             color: red;
@@ -38,7 +44,7 @@
     <textarea id="textbox" oninput="updateCharacterCount()"></textarea>
     <p>現在の文字数： <span id="charCount">0</span> 文字</p>
     <p id="alertMessage">文字数が40文字を超えちゃったよ(´・ω・｀)</p>
-    <a id="twitter-share-button" href="#" target="_blank">Post</a>
+    <button id="tweetButton" onclick="postToTwitter()">Post</button>
     <p id="responseMessage"></p>
 
     <h2>使い方</h2>
@@ -54,7 +60,7 @@
     <ul>
         <li>ただただ、文字数をカウントして内容と一緒にポストするだけです。</li>
         <li>文字数オーバーアラートが出ても当然のようにポストできます…とはいってもXの仕様は超えられませんので140文字(280文字)までです</li>
-        <li>ポストする際に85文字くらい余計な文字が入ります(ハッシュタグとかサイト名とか)ので、実質50文字前後が限界点</li>
+        <li>ポストする際に87文字くらい余計な文字が入ります(ハッシュタグとかサイト名とか)ので、実質50文字前後が限界点？</li>
         <li>余計な機能は(私の技術的に)ありません。</li>
         <li>本サービスを利用してポストした結果のいかなるものに対しても責任取れません。</li>
         <li>作った人は <a href="https://x.com/siuso0633">よんごうき @siuso0633</a> です。</li>
@@ -76,6 +82,11 @@
             } else {
                 alertMessage.style.display = 'none';
             }
+        }
+
+        function postToTwitter() {
+            var text = document.getElementById('textbox').value;
+            var count = text.length;
 
             // 現在のページのURLを取得
             var currentUrl = window.location.href;
@@ -91,10 +102,11 @@
             var siteTitle = document.title;
             
             // Twitterシェアボタンのhrefを更新
-            var twitterShareButton = document.getElementById('twitter-share-button');
             var tweetContent = '【春秋要約】' + dateStr + '\n\n' + text + ' (' + count + ')\n\n' + hashtags + '\n\n' + siteTitle + '\n' + currentUrl;
             var twitterShareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetContent);
-            twitterShareButton.setAttribute('href', twitterShareUrl);
+            
+            // Twitter投稿ページを開く
+            window.open(twitterShareUrl, '_blank');
         }
     </script>
 </body>
