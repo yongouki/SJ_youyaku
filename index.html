@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <h1>春秋要約したったー ver 0.9.1</h1>
+    <h1>春秋要約したったー ver 0.9.2</h1>
     <textarea id="textbox" oninput="updateCharacterCount()"></textarea>
     <p>Character Count: <span id="charCount">0</span></p>
     <a id="twitter-share-button" href="#" target="_blank">Tweet</a>
@@ -46,7 +46,7 @@
             
             // Twitterシェアボタンのhrefを更新
             var twitterShareButton = document.getElementById('twitter-share-button');
-            var tweetContent = '【春秋要約】\n' + dateStr + '\n\n' + text + ' (' + count + ')\n\n' + hashtags + '\n' + siteTitle + '\n' + currentUrl;
+            var tweetContent = '【春秋要約】' + dateStr + '\n\n' + text + ' (' + count + ')\n\n' + hashtags + '\n\n' + siteTitle + '\n' + currentUrl;
             var twitterShareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetContent);
             twitterShareButton.setAttribute('href', twitterShareUrl);
         }
