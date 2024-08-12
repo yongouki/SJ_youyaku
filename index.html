@@ -16,6 +16,10 @@
         #tweetButton {
             margin-top: 10px;
         }
+        #alertMessage {
+            color: red;
+            display: none;
+        }
     </style>
 </head>
 
@@ -30,9 +34,10 @@
 </script>
 
 <body>
-    <h1>春秋要約したったー v.00.90</h1>
+    <h1>春秋要約したったー v.00.95</h1>
     <textarea id="textbox" oninput="updateCharacterCount()"></textarea>
     <p>Character Count: <span id="charCount">0</span></p>
+    <p id="alertMessage">文字数が40文字を超えています！</p>
     <a id="twitter-share-button" href="#" target="_blank">Post</a>
     <p id="responseMessage"></p>
 
@@ -59,6 +64,14 @@
             var text = document.getElementById('textbox').value;
             var count = text.length;
             document.getElementById('charCount').innerText = count;
+
+            // アラートメッセージの表示・非表示
+            var alertMessage = document.getElementById('alertMessage');
+            if (count > 40) {
+                alertMessage.style.display = 'block';
+            } else {
+                alertMessage.style.display = 'none';
+            }
 
             // 現在のページのURLを取得
             var currentUrl = window.location.href;
