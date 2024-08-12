@@ -34,10 +34,10 @@
 </script>
 
 <body>
-    <h1>春秋要約したったー v.00.95</h1>
+    <h1>春秋要約したったー ver.1.0.0</h1>
     <textarea id="textbox" oninput="updateCharacterCount()"></textarea>
     <p>Character Count: <span id="charCount">0</span></p>
-    <p id="alertMessage">文字数が40文字を超えています！</p>
+    <p id="alertMessage">文字数が40文字を超えちゃったよ(´・ω・｀)</p>
     <a id="twitter-share-button" href="#" target="_blank">Post</a>
     <p id="responseMessage"></p>
 
@@ -46,15 +46,19 @@
         <li>春秋を読む</li>
         <li>テキストボックスに要約を打ち込む</li>
         <li>Post のリンクをクリックする</li>
+        <li>Xの画面に遷移するので「ポスト」する</li>
+        <li>おしまい</li>
     </ol>
     
     <h2>更新履歴</h2>
-    v.00.90　ひとまず公開開始
+    ver.1.0.0　ひとまず公開開始 (2024/8/12)
 
     <h2>利用上の注意</h2>
     <ul>
         <li>ただただ、文字数をカウントして内容と一緒にポストするだけです。</li>
-        <li>文字数オーバー警告とか余計な機能は(私の技術的に)ありません。</li>
+        <li>文字数オーバーアラートが出ても当然のようにポストできます…とはいってもXの仕様は超えられませんので140文字(280文字)までです</li>
+        <li>ポストする際に85文字くらい余計な文字が入ります(ハッシュタグとかサイト名とか)ので、実質50文字前後が限界点</li>
+        <li>余計な機能は(私の技術的に)ありません。</li>
         <li>本サービスを利用してポストした結果のいかなるものに対しても責任取れません。</li>
         <li>作った人は <a href="https://x.com/siuso0633">よんごうき @siuso0633</a> です。</li>
     </ul>
@@ -77,7 +81,7 @@
             var currentUrl = window.location.href;
 
             // ハッシュタグを追加
-            var hashtags = "#春秋要約 #sjyouyaku #要約したったー";
+            var hashtags = "#春秋要約 #sjyouyaku";
             
             // 本日の日付を取得
             var today = new Date();
