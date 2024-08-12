@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Counter and Twitter Share</title>
+    <title>春秋要約したったー ver.0.9.1</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,19 +34,19 @@
             // 現在のページのURLを取得
             var currentUrl = window.location.href;
 
-            // サイトのタイトルを取得
-            var siteTitle = document.title;
-            
             // ハッシュタグを追加
             var hashtags = "#春秋要約 #sjyouyaku";
             
             // 本日の日付を取得
             var today = new Date();
             var dateStr = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+
+            // サイトのタイトルを取得
+            var siteTitle = document.title;
             
             // Twitterシェアボタンのhrefを更新
             var twitterShareButton = document.getElementById('twitter-share-button');
-            var tweetContent = '【春秋要約】' + dateStr + '\n\n' + text + '(' + count + ')\n\n' + hashtags + '\n' + siteTitle + currentUrl;
+            var tweetContent = '【春秋要約】\n' + dateStr + '\n\n' + text + ' (' + count + ')\n\n' + hashtags + '\n' + siteTitle + '\n' + currentUrl;
             var twitterShareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetContent);
             twitterShareButton.setAttribute('href', twitterShareUrl);
         }
