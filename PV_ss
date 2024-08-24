@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スクリーンセーバー抑制ページ</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>スクリーンセーバーを抑制中...</h1>
+    
+    <script>
+        function preventScreenSaver() {
+            let hiddenElement = document.createElement("div");
+            hiddenElement.style.width = "1px";
+            hiddenElement.style.height = "1px";
+            hiddenElement.style.position = "absolute";
+            hiddenElement.style.top = "-1000px";
+            document.body.appendChild(hiddenElement);
+
+            function toggleVisibility() {
+                hiddenElement.style.visibility = 
+                    hiddenElement.style.visibility === "hidden" ? "visible" : "hidden";
+                requestAnimationFrame(toggleVisibility);
+            }
+
+            toggleVisibility();
+        }
+
+        preventScreenSaver();
+    </script>
+</body>
+</html>
