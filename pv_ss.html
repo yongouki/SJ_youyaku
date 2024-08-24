@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v1新しいウィンドウでスクリーンセーバー抑制</title>
+    <title>v2新しいウィンドウでスクリーンセーバー抑制</title>
     <style>
         body {
             display: flex;
@@ -34,7 +34,7 @@
         function openNewWindow() {
             const newWindow = window.open('', 'newWindow', 'width=200,height=200');
 
-            newWindow.document.write(`
+            const newWindowContent = `
                 <!DOCTYPE html>
                 <html lang="ja">
                 <head>
@@ -78,7 +78,10 @@
                     </script>
                 </body>
                 </html>
-            `);
+            `;
+
+            newWindow.document.open();
+            newWindow.document.write(newWindowContent);
             newWindow.document.close();
         }
 
