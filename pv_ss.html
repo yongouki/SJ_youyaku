@@ -49,7 +49,38 @@
         }
 
         function openNewWindow() {
-            window.open('', 'newWindow', 'width=200,height=200');
+            const newWindow = window.open('', 'newWindow', 'width=200,height=200');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="ja">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>スクリーンセーバー抑制ウィンドウ</title>
+                    <style>
+                        body {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            font-family: Arial, sans-serif;
+                            background-color: #f0f0f0;
+                        }
+                        h1 {
+                            font-size: 1rem;
+                            color: #333;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>スクリーンセーバーを抑制中...</h1>
+                    <script>
+                        (${preventScreenSaver.toString()})();
+                    </script>
+                </body>
+                </html>
+            `);
+            newWindow.document.close();
         }
 
         document.getElementById('openWindowButton').addEventListener('click', openNewWindow);
