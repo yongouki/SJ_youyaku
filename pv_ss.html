@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>スクリーンセーバー抑制ページ</title>
+    <title>新しいウィンドウでスクリーンセーバー抑制</title>
     <style>
         body {
             display: flex;
@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-    <h1>スクリーンセーバーを抑制中...</h1>
+    <h1>スクリーンセーバー抑制ウィンドウを開く</h1>
     <button id="openWindowButton">新しいウィンドウを開く</button>
 
     <script>
@@ -84,8 +84,6 @@
         }
 
         document.getElementById('openWindowButton').addEventListener('click', openNewWindow);
-
-        preventScreenSaver();
     </script>
 </body>
 </html>
