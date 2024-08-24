@@ -31,25 +31,9 @@
     <button id="openWindowButton">新しいウィンドウを開く</button>
 
     <script>
-        function preventScreenSaver() {
-            let hiddenElement = document.createElement("div");
-            hiddenElement.style.width = "1px";
-            hiddenElement.style.height = "1px";
-            hiddenElement.style.position = "absolute";
-            hiddenElement.style.top = "-1000px";
-            document.body.appendChild(hiddenElement);
-
-            function toggleVisibility() {
-                hiddenElement.style.visibility = 
-                    hiddenElement.style.visibility === "hidden" ? "visible" : "hidden";
-                requestAnimationFrame(toggleVisibility);
-            }
-
-            toggleVisibility();
-        }
-
         function openNewWindow() {
             const newWindow = window.open('', 'newWindow', 'width=200,height=200');
+
             newWindow.document.write(`
                 <!DOCTYPE html>
                 <html lang="ja">
@@ -75,7 +59,22 @@
                 <body>
                     <h1>スクリーンセーバーを抑制中...</h1>
                     <script>
-                        (${preventScreenSaver.toString()})();
+                        (function() {
+                            let hiddenElement = document.createElement("div");
+                            hiddenElement.style.width = "1px";
+                            hiddenElement.style.height = "1px";
+                            hiddenElement.style.position = "absolute";
+                            hiddenElement.style.top = "-1000px";
+                            document.body.appendChild(hiddenElement);
+
+                            function toggleVisibility() {
+                                hiddenElement.style.visibility = 
+                                    hiddenElement.style.visibility === "hidden" ? "visible" : "hidden";
+                                requestAnimationFrame(toggleVisibility);
+                            }
+
+                            toggleVisibility();
+                        })();
                     </script>
                 </body>
                 </html>
