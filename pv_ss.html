@@ -12,16 +12,24 @@
             height: 100vh;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            flex-direction: column;
         }
         h1 {
             font-size: 2rem;
             color: #333;
         }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1>スクリーンセーバーを抑制中...</h1>
-    
+    <button id="openWindowButton">新しいウィンドウを開く</button>
+
     <script>
         function preventScreenSaver() {
             let hiddenElement = document.createElement("div");
@@ -39,6 +47,12 @@
 
             toggleVisibility();
         }
+
+        function openNewWindow() {
+            window.open('', 'newWindow', 'width=200,height=200');
+        }
+
+        document.getElementById('openWindowButton').addEventListener('click', openNewWindow);
 
         preventScreenSaver();
     </script>
