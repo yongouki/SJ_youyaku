@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v5新しいウィンドウでスクリーンセーバー抑制</title>
+    <title>スクリーンセーバー抑制ウィンドウを開く</title>
     <style>
         body {
             display: flex;
@@ -32,59 +32,7 @@
 
     <script>
         function openNewWindow() {
-            const newWindow = window.open('', 'newWindow', 'width=200,height=200');
-
-            // HTMLコードを変数に格納
-            const newWindowContent = `
-                <!DOCTYPE html>
-                <html lang="ja">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>スクリーンセーバー抑制ウィンドウ</title>
-                    <style>
-                        body {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100vh;
-                            font-family: Arial, sans-serif;
-                            background-color: #f0f0f0;
-                        }
-                        h1 {
-                            font-size: 1rem;
-                            color: #333;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h1>スクリーンセーバーを抑制中...</h1>
-                    <script>
-                        (function() {
-                            let hiddenElement = document.createElement("div");
-                            hiddenElement.style.width = "1px";
-                            hiddenElement.style.height = "1px";
-                            hiddenElement.style.position = "absolute";
-                            hiddenElement.style.top = "-1000px";
-                            document.body.appendChild(hiddenElement);
-
-                            function toggleVisibility() {
-                                hiddenElement.style.visibility = 
-                                    hiddenElement.style.visibility === "hidden" ? "visible" : "hidden";
-                                requestAnimationFrame(toggleVisibility);
-                            }
-
-                            toggleVisibility();
-                        })();
-                    </script>
-                </body>
-                </html>
-            `;
-
-            // 新しいウィンドウにHTMLを書き込む
-            newWindow.document.open();
-            newWindow.document.write(newWindowContent);
-            newWindow.document.close();
+            window.open('suppressor.html', 'newWindow', 'width=200,height=200');
         }
 
         document.getElementById('openWindowButton').addEventListener('click', openNewWindow);
